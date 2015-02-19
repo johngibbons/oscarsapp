@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
-  has_many :categories, through: :entries_categories
-  has_many :nominees, through: :entries_nominees
-  has_many :entries_categories
-  has_many :entries_nominees
+  has_many :categories, through: :selections
+  has_many :nominees, through: :selections
+  has_many :selections, dependent: :destroy
+  accepts_nested_attributes_for :selections
 end

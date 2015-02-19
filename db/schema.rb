@@ -41,30 +41,22 @@ ActiveRecord::Schema.define(version: 20150219065223) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "entries_categories", force: :cascade do |t|
-    t.integer  "entry_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "entries_categories", ["category_id"], name: "index_entries_categories_on_category_id", using: :btree
-  add_index "entries_categories", ["entry_id"], name: "index_entries_categories_on_entry_id", using: :btree
-
-  create_table "entries_nominees", force: :cascade do |t|
-    t.integer  "entry_id"
-    t.integer  "nominee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "entries_nominees", ["entry_id"], name: "index_entries_nominees_on_entry_id", using: :btree
-  add_index "entries_nominees", ["nominee_id"], name: "index_entries_nominees_on_nominee_id", using: :btree
-
   create_table "nominees", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "selections", force: :cascade do |t|
+    t.integer  "entry_id"
+    t.integer  "category_id"
+    t.integer  "nominee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "selections", ["category_id"], name: "index_selections_on_category_id", using: :btree
+  add_index "selections", ["entry_id"], name: "index_selections_on_entry_id", using: :btree
+  add_index "selections", ["nominee_id"], name: "index_selections_on_nominee_id", using: :btree
 
 end
