@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Categories</h1>
+<h1>Oscar Categories</h1>
 
 <table>
   <thead>
@@ -10,15 +10,9 @@
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= category.value %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%= render @categories %>
       </tr>
-    <% end %>
   </tbody>
 </table>
 

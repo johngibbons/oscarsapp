@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all.order('value DESC, name')
+    @category = User.new
   end
 
   # GET /categories/1
@@ -28,7 +29,8 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to new_category_path, notice: 'Category was successfully created.' }
+        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.js   {}
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
