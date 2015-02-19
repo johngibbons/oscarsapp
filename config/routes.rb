@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :nominees
+
+  resources :categories
+
   resources :entries
 
   root 'entries#index'
