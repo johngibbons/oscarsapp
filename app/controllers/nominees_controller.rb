@@ -5,6 +5,7 @@ class NomineesController < ApplicationController
   # GET /nominees.json
   def index
     @nominees = Nominee.all
+    @nominee = Nominee.new
   end
 
   # GET /nominees/1
@@ -29,6 +30,7 @@ class NomineesController < ApplicationController
     respond_to do |format|
       if @nominee.save
         format.html { redirect_to @nominee, notice: 'Nominee was successfully created.' }
+        format.js {}
         format.json { render :show, status: :created, location: @nominee }
       else
         format.html { render :new }
