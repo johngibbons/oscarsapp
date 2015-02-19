@@ -1,4 +1,4 @@
-class EntriesNominee < ActiveRecord::Base
+class Selection < ActiveRecord::Base
   belongs_to :entry
   belongs_to :category
   belongs_to :nominee

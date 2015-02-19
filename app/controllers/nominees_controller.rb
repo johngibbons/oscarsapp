@@ -71,6 +71,6 @@ class NomineesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nominee_params
-      params.require(:nominee).permit(:name, :category)
+      params.require(:nominee).permit(:name, :category_ids => [])
     end
 end

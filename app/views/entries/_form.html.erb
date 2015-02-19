@@ -12,7 +12,18 @@
   <% end %>
 
   <div class="actions">
-    
+    <%= f.input :name %>
+    <% @categories.each do |category| %>
+      <%= f.simple_fields_for :selections do |s| %>
+        <%= s.label category.name %>
+        <%= s.hidden_field :category_id, value: category.id %>
+        <% category.nominees.each do |nominee| %>
+          <%= s.label :nominee_id, nominee.name, value: "#{nominee.id}"  %>
+          <%= s.radio_button :nominee_id, nominee.id %>
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%= f.button :submit %>
   </div>
 <% end %>

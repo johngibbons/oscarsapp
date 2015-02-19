@@ -15,6 +15,8 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
+    @entry.selections.new
+    @categories = Category.all
   end
 
   # GET /entries/1/edit
@@ -69,6 +71,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params[:entry]
+      params.require(:entry).permit(:name, selections_attributes: [ :category_id, :nominee_id ])
     end
 end
