@@ -1,4 +1,4 @@
-<%= form_for(@entry) do |f| %>
+<%= simple_form_for(@entry) do |f| %>
   <% if @entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= radio_button_tag(:best_picture, "american_sniper") %>
+    <%= label_tag(:best_picture_american_sniper, "American Sniper") %>
+    <%= radio_button_tag(:best_picture, "birdman") %>
+    <%= label_tag(:best_picture_birdman, "Birdman") %>
+    <%= radio_button_tag(:best_picture, "boyhood") %>
+    <%= label_tag(:best_picture_boyhood, "Boyhood") %>
+    <%= radio_button_tag(:best_picture, "grand_budapest") %>
+    <%= label_tag(:best_picture_grand_budapest, "The Grand Budapest Hotel") %>
+    <%= radio_button_tag(:best_picture, "imitation_game") %>
+    <%= label_tag(:best_picture_imitation_game, "The Imitation Game") %>
+    <%= f.button :submit %>
   </div>
 <% end %>

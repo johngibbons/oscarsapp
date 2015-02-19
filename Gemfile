@@ -32,6 +32,10 @@ gem 'unicorn'
 
 gem 'foundation-rails'
 
+gem 'factory_girl'
+gem 'database_cleaner', '~> 1.4.0'
+gem 'simple_form'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,6 +48,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rails_layout'
 end
 
 gem 'rails_12factor', group: :production
