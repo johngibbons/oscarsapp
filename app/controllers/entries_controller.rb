@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
 
   # GET /entries
   # GET /entries.json
@@ -15,12 +16,12 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
-    @entry.selections.new
-    @categories = Category.all
   end
 
   # GET /entries/1/edit
   def edit
+    @entry = Entry.find(params[:id])
+    @master = Entry.find_by(master: true).limit(1)
   end
 
   # POST /entries
@@ -71,6 +72,10 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:name, selections_attributes: [ :category_id, :nominee_id ])
+      params.require(:entry).permit(:name, selections_attributes: [:id, :category_id, :nominee_id ])
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 end
