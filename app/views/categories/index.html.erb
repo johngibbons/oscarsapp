@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= render 'form' %>
+
 <h1>Oscar Categories</h1>
 
 <table>
@@ -9,10 +11,8 @@
     </tr>
   </thead>
 
-  <tbody>
-      <tr>
+  <tbody id="categories">
       <%= render @categories %>
-      </tr>
   </tbody>
 </table>
 
