@@ -20,7 +20,7 @@ class Entry < ActiveRecord::Base
   def update_score
     @master = Entry.find_by(master: true)
     reset_score
-    if @master
+    unless @master.nil?
       self.categories.each do |category|
         if correct_answer?(category)
           add_to_score(category)
