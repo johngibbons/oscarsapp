@@ -20,12 +20,14 @@ class Entry < ActiveRecord::Base
   def update_score
     @master = Entry.find_by(master: true)
     reset_score
-    self.categories.each do |category|
-      if correct_answer?(category)
-        add_to_score(category)
+    if @master
+      self.categories.each do |category|
+        if correct_answer?(category)
+          add_to_score(category)
+        end
       end
+      self.save
     end
-    self.save
   end
 
   def previously_selected?(category, nominee)
