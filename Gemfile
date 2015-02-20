@@ -35,6 +35,7 @@ gem 'foundation-rails'
 gem 'factory_girl'
 gem 'database_cleaner', '~> 1.4.0'
 gem 'simple_form'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

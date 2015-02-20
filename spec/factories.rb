@@ -22,5 +22,6 @@ FactoryGirl.define do
     name "American Sniper"
     categories
     entries
+    selections
   end
 end

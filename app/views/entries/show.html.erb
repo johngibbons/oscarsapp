@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Score: <%= @entry.score %> </h1>
+
+<ul>
+	<% @entry.selections.each do |selection| %>
+		<li><h5><%= selection.category.name %></h5></li>
+		<li><p><%= selection.nominee.name %></p></li>
+	<% end %>
+</ul>
+
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>

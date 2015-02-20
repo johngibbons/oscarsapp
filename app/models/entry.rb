@@ -4,14 +4,35 @@ class Entry < ActiveRecord::Base
   has_many :selections, dependent: :destroy
   accepts_nested_attributes_for :selections, reject_if: :all_blank
 
+  #returns true if anser matches master
+  def correct_answer?(category)
+    self.selections.find_by(category: category).nominee == @master.selections.find_by(category: category).nominee
+  end
+
+  def reset_score
+    self.score = 0
+  end
+
+  def add_to_score(category)
+    self.score += category.value
+  end
+
   def update_score
-    master = Entry.find_by(master: true)
+    @master = Entry.find_by(master: true)
+    reset_score
     self.categories.each do |category|
-      selection_by_cat = selection.find_by(category: category)
-      if self.selection_by_cat.nominee = master.selection_by_cat.nominee
-        self.score += category.value
-        self.save
+      if correct_answer?(category)
+        add_to_score(category)
       end
+    end
+    self.save
+  end
+
+  def previously_selected?(category, nominee)
+    if self.selections.find_by(category_id: category.id)
+      self.selections.find_by(category_id: category.id).nominee == nominee
+    else
+      false
     end
   end
 end

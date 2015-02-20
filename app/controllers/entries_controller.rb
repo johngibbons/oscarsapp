@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit]
+  after_action :update_scores, only: [:create, :show, :update]
 
   # GET /entries
   # GET /entries.json
@@ -15,13 +16,16 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
+    @cat_length = @categories.length
     @entry = Entry.new
+    @cat_length.times do |c|
+      @entry.selections.new
+    end
   end
 
   # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
-    @master = Entry.find_by(master: true).limit(1)
   end
 
   # POST /entries
@@ -44,9 +48,9 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1.json
   def update
     respond_to do |format|
-      if @entry.update(entry_params)
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @entry }
+      if @entry.update(entry_params)          
+          format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+          format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
@@ -72,10 +76,15 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:name, selections_attributes: [:id, :category_id, :nominee_id ])
+      params.require(:entry).permit(:name, selections_attributes: [ :id, :category_id, :nominee_id ])
     end
 
     def set_categories
       @categories = Category.all
+    end
+
+    def update_scores
+      @entries = Entry.all
+      @entries.each { |entry| entry.update_score }
     end
 end

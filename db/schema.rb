@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219065223) do
+ActiveRecord::Schema.define(version: 20150219225900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150219065223) do
 
   create_table "entries", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "score"
+    t.decimal  "score",      default: 0.0
     t.boolean  "master",     default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
