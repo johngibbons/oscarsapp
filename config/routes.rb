@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
   resources :nominees
 
   resources :categories
 
   resources :entries
 
-  root 'entries#index'
+  root 'static_pages#home'
+
+  get     'leaderboard'   =>  'entries#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
