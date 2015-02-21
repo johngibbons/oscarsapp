@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Entries</h1>
+<h1>Leaderboard</h1>
 
 <table>
   <thead>
@@ -11,13 +11,15 @@
 
   <tbody>
     <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.name %></td>
-        <td><%= entry.score %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% unless entry.master? %>
+        <tr>
+          <td><%= entry.name %></td>
+          <td><%= "#{entry.score} / #{total_possible}" %></td>
+          <td><%= link_to 'Show', entry %></td>
+          <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+          <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
