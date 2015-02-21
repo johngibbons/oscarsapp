@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-<div class="row">
+<div class="row" data-equalizer>
   <div class="actions">
     <%= f.input :name %>
       <% @i = 0 %>
       <%= f.simple_fields_for :selections do |s| %>
         <% @i += 1 %>
         <% category = Category.find(@i) %>
-          <div class="large-4 columns">
+          <div class="large-4 columns" data-equalizer-watch>
           <div class="panel">
             <h3><%= category.name %></h3>
             <%= s.hidden_field :category_id, value: category.id %>
