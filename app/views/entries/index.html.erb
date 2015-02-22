@@ -14,7 +14,7 @@
       <% unless entry.master? %>
         <tr>
           <td><%= entry.name %></td>
-          <td><%= "#{entry.score} / #{total_possible}" %></td>
+          <td><%= "#{number_with_precision(entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %></td>
           <td><%= link_to 'Show', entry %></td>
           <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
           <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

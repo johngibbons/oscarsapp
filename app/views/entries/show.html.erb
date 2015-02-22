@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Score: <%= @entry.score %> </h1>
+<h1>Score: <%= "#{number_with_precision(@entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %> </h1>
 
 <ul>
 	<% @entry.selections.each do |selection| %>

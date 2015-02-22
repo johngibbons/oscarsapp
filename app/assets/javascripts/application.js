@@ -16,5 +16,32 @@
 //= require foundation
 //= require_tree .
 $(function() {
-  $(document).foundation();
+	$(document).foundation();
+	
+	var ready;
+	ready = function() {
+		equalHeight('.equalHeight');
+	};
+
+	var maxHeight = 0;
+
+  function equalHeight(col) {
+	//Get all the element with class = col
+	col = $(col);
+	
+    //Loop all the col
+    col.each(function() {        
+	
+	//Store the highest value
+	if($(this).height() > maxHeight) {
+            maxHeight = $(this).height();;
+        }
+    });
+	
+    //Set the height
+    col.height(maxHeight);
+	}
+
+	$(document).ready(ready)
+	$(document).on('page:load', ready)
 });
