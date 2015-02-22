@@ -2,27 +2,14 @@
 
 <h1>Leaderboard</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @entries.each do |entry| %>
       <% unless entry.master? %>
-        <tr>
-          <td><%= entry.name %></td>
-          <td><%= "#{number_with_precision(entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %></td>
-          <td><%= link_to 'Show', entry %></td>
-          <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-          <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <div class="row leaderboard-row">
+          <div class="large-8 small-8 columns"><%= link_to entry.name, entry %></div>
+          <div class="large-4 small-4 columns"><%= "#{number_with_precision(entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %></div>
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 

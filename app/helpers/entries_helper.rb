@@ -1,6 +1,10 @@
 module EntriesHelper
+
+  def master_entry
+    @master = Entry.find_by(master: true)
+  end
+
   def total_possible
-    master = Entry.find_by(master: true)
-    master.score
+    master_entry.score
   end
 end

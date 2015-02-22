@@ -6,7 +6,11 @@ class Entry < ActiveRecord::Base
 
   #returns true if anser matches master
   def correct_answer?(category)
-    self.selections.find_by(category: category).nominee == @master.selections.find_by(category: category).nominee
+    unless @master.selections.find_by(category: category).nil?
+      self.selections.find_by(category: category).nominee == @master.selections.find_by(category: category).nominee
+    else
+      return false
+    end
   end
 
   def reset_score

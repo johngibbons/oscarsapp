@@ -26,3 +26,19 @@ main {
 	padding-left: 0.9375rem;
 	padding-right: 0.9375rem;
 }
+
+input[type="text"] {
+	margin-bottom: 4rem;
+}
+
+.selectee {
+	font-weight: 700;
+}
+
+.correct {
+	color: $success-color;
+}
+
+.incorrect {
+	color: $alert-color;
+}
