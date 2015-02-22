@@ -154,3 +154,7 @@ a.button {
 h3.warning {
 	color: $alert-color;
 }
+
+input[type="radio"] + label {
+	display: inline;
+}
