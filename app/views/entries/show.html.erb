@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Score: <%= "#{number_with_precision(@entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %> </h1>
+
+<% if submitted_entry? && @entry == current_entry %>
+	<button><%= link_to 'Edit This Entry', edit_entry_path(@entry) %></button>
+<% end %>
 
 <div class="row">
 	<% @entry.selections.each do |selection| %>
@@ -36,6 +38,3 @@
 		</div>
 	<% end %>
 </div>
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>

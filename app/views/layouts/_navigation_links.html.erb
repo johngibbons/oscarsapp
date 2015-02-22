@@ -1,4 +1,8 @@
 <%# add navigation links to this file %>
 <li class="name"><%= link_to 'New Entry', new_entry_path %></li>
+<li class="name"><%= link_to 'Log in Entry', login_path %></li>
 <li class="name"><%= link_to 'Leaderboard', leaderboard_path %></li>
+<% if submitted_entry? %>
+	<li class="name"><%= link_to "#{current_entry.name}'s Entry", entry_path(current_entry)%></li>
+<% end %>
 

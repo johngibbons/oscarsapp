@@ -1,0 +1,7 @@
+<h1>Log into an existing entry</h1>
+
+<%= simple_form_for(:session, url: login_path) do |f| %>
+	<%= f.input :name, label: "Entry Name (case sensitive)" %>
+
+	<%= f.submit "Log in Entry", class: "button" %>
+<% end %>

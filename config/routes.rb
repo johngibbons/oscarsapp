@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'static_pages/home'
 
   resources :nominees
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get     'leaderboard'   =>  'entries#index'
+  get     'login'         =>  'sessions#new'
+  post    'login'         =>  'sessions#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

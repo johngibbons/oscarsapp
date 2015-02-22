@@ -35,6 +35,8 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
+        forget_prev_entries
+        remember(@entry)
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else

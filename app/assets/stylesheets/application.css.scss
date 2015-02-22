@@ -15,6 +15,12 @@
 @import "scaffolds";
 @import "foundation_and_overrides";
 
+a {
+	&:hover {
+		background-color: transparent;
+	}
+}
+
 h3 {
 	font-family: $adobe-text-pro;
 	font-weight: 400;
@@ -41,4 +47,44 @@ input[type="text"] {
 
 .incorrect {
 	color: $alert-color;
+}
+
+button a {
+	text-transform: uppercase;
+	font-weight: 700;
+	color: $white;
+
+	&:hover, &:visited {
+		color: $white;
+	}
+}
+
+.button {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+#home-page {
+	text-align: center;
+	margin-top: 5em;
+
+	button {
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+	}
+}
+
+.alert-box {
+	border: none;
+}
+
+.alert-box.success {
+	background-color: #e1f8d1;
+	color: scale-color(#e1f8d1, $lightness: -60%);
+}
+
+.alert-box.alert {
+	background-color: #fbe3e4;
+	color: #96151b;
 }

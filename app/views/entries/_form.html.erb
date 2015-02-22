@@ -21,6 +21,7 @@
           <div class="large-4 columns">
           <div class="panel equalHeight">
             <h3><%= category.name %></h3>
+            <span class="value"><%= pluralize(category.value, 'point') %></span>
             <%= s.hidden_field :category_id, value: category.id %>
             <% category.nominees.each do |nominee| %>
               <div class="nominee">
