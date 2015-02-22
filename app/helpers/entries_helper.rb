@@ -13,7 +13,7 @@ module EntriesHelper
   end
 
   def show_started?
-    start_time = DateTime.civil_from_format :local, 2015, 2, 22, 18, 30
-    Time.zone.now.to_i > start_time.to_i
+    start_time = Time.zone.parse("2015-02-22 15:17:00")
+    Time.zone.now > start_time
   end
 end
