@@ -11,4 +11,8 @@ module EntriesHelper
       return 0
     end
   end
+
+  def show_started?
+    
+  end
 end

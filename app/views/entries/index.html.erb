@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Leaderboard</h1>
-
+    <% @i = 0 %>
     <% @entries.each do |entry| %>
       <% unless entry.master? %>
+        <% @i += 1 %>
         <div class="row leaderboard-row">
-          <div class="large-8 small-8 columns"><%= link_to entry.name, entry %></div>
+          <div class="large-8 small-8 columns"><%= link_to "#{@i}.\s#{entry.name}", entry %>
+          </div>
           <div class="large-4 small-4 columns"><%= "#{number_with_precision(entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %></div>
         </div>
       <% end %>
