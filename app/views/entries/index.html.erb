@@ -7,7 +7,7 @@
         <% @i += 1 %>
         <div class="row leaderboard-row">
           <div class="large-8 small-8 columns"><%= link_to "#{@i}.\s#{entry.name}", entry %>
-            <% if current_entry.master? %>
+            <% if current_entry && current_entry.master? %>
               <span><%= link_to 'Delete Entry', entry, method: :delete, data: { confirm: 'Are you sure?' } %></span>
             <% end %>
           </div>
