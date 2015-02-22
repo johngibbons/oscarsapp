@@ -36,6 +36,7 @@ gem 'factory_girl'
 gem 'database_cleaner', '~> 1.4.0'
 gem 'simple_form'
 gem 'faker'
+gem 'jquery-countdown-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

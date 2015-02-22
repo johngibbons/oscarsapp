@@ -2,5 +2,9 @@
 
 <h1>Welcome to the Gibbons Oscar Party</h1>
 
-<%= link_to "New Entry", new_entry_path, class: "button home" %>
+<% if show_started? %>
+	<h3>Sorry, no new entries.  The show has started!</h3>
+<% else %>
+	<%= link_to "New Entry", new_entry_path, class: "button home" %>
+<% end %>
 </div>

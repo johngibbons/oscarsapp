@@ -98,9 +98,9 @@ $include-html-global-classes: $include-html-classes;
 
 	 $white       : #FFFFFF;
 // $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
+	 $snow        : #F9F9F9;
 // $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
+ $white-smoke : #F5F5F5;
 // $silver      : #EFEFEF;
 // $smoke       : #EEEEEE;
 // $gainsboro   : #DDDDDD;
@@ -1365,7 +1365,7 @@ $body-font-family: $brandon;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
- $topbar-bg-color: $white;
+ $topbar-bg-color: $white-smoke;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1377,20 +1377,20 @@ $body-font-family: $brandon;
 	 $topbar-title-font-size: rem-calc(23);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
-// $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $oil;
+ $topbar-dropdown-bg: $white-smoke;
+ $topbar-dropdown-link-color: $oil;
+ $topbar-dropdown-link-bg: $white-smoke;
+ $topbar-dropdown-link-bg-hover: $white;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: $white;
+ $topbar-dropdown-toggle-color: $oil;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
  $topbar-link-color: $oil;
  $topbar-link-color-hover: $aluminum;
-// $topbar-link-color-active: $white;
-// $topbar-link-color-active-hover: $white;
+ $topbar-link-color-active: $aluminum;
+ $topbar-link-color-active-hover: $aluminum;
 // $topbar-link-weight: $font-weight-normal;
  $topbar-link-font-size: rem-calc(18);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
@@ -1418,8 +1418,8 @@ $body-font-family: $brandon;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: $font-weight-bold;
-// $topbar-menu-link-color: $white;
-// $topbar-menu-icon-color: $white;
+ $topbar-menu-link-color: $oil;
+ $topbar-menu-icon-color: $oil;
 // $topbar-menu-link-color-toggled: $jumbo;
 // $topbar-menu-icon-color-toggled: $jumbo;
 
