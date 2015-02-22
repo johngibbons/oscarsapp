@@ -11,6 +11,17 @@
 			<div class="countdown-entry">
 				<span id = "countdown-edit-text">You may edit your entry for another </span><span class="countdown"></span>
 			</div>
+
+			<div class="empty-entry-warning">
+				<% @entry.selections.each do |selection| %>
+					<% if selection.nominee.nil? %>
+						<% @any_empty = true %>
+					<% end %>
+				<% end %>
+				<% if @any_empty %>
+					<h3 class="warning">Warning! You haven't filled out all of the categories.  See below.</h3>
+				<% end %>
+			</div>
 		<% end %>
 	<% end %>
 </div>
@@ -19,7 +30,11 @@
 	<div class="row">
 		<% @entry.selections.each do |selection| %>
 		  <div class="large-4 columns">
+		  <% if selection.nominee.nil? %>
+			  <div class="panel equalHeight not-selected">
+		  <% else %>
 			  <div class="panel equalHeight">
+		  <% end %>
 					<h3><%= selection.category.name %></h3>
 	        <h5 class="value"><%= pluralize(selection.category.value, 'point') %></h5>
 					<% @cat = Category.find(selection.category.id) %>

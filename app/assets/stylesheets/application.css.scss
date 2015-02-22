@@ -140,3 +140,11 @@ a.button {
 		margin-bottom: 1em;
 	}
 }
+
+.not-selected {
+	border: 3px solid $alert-color;
+}
+
+h3.warning {
+	color: $alert-color;
+}
