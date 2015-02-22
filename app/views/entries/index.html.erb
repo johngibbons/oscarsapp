@@ -7,6 +7,9 @@
         <% @i += 1 %>
         <div class="row leaderboard-row">
           <div class="large-8 small-8 columns"><%= link_to "#{@i}.\s#{entry.name}", entry %>
+            <% if current_entry.master? %>
+              <span><%= link_to 'Delete Entry', entry, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+            <% end %>
           </div>
           <div class="large-4 small-4 columns"><%= "#{number_with_precision(entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %></div>
         </div>
