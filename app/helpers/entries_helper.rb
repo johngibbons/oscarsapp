@@ -13,7 +13,7 @@ module EntriesHelper
   end
 
   def show_started?
-    start_time = Time.zone.parse("2015-02-22 15:17:00")
+    start_time = Time.zone.local(2015, 2, 22, 15, 24)
     Time.zone.now > start_time
   end
 end
