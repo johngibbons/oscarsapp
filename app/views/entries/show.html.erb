@@ -10,7 +10,9 @@
 				<% @cat = Category.find(selection.category.id) %>
 				<% @cat.nominees.each do |nominee| %>
 					<% if nominee == selection.nominee %>
-						<% master = master_entry.selections.find_by(category_id: @cat) %>
+						<% if master_entry %>
+							<% master = master_entry.selections.find_by(category_id: @cat) %>
+						<% end %>
 						<% if master && master.nominee && nominee == master.nominee %>
 							<div class="nominee selectee correct">
 								<%= nominee.name %>

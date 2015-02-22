@@ -5,6 +5,10 @@ module EntriesHelper
   end
 
   def total_possible
-    master_entry.score
+    if master_entry
+      master_entry.score
+    else
+      return 0
+    end
   end
 end
