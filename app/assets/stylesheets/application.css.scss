@@ -47,6 +47,7 @@ input[type="text"] {
 
 .incorrect {
 	color: $alert-color;
+	text-decoration: line-through;
 }
 
 button a {
@@ -59,9 +60,13 @@ button a {
 	}
 }
 
-.button {
+a.button {
 	text-transform: uppercase;
 	font-weight: 700;
+
+	&:hover, &:visited {
+		color: $white;
+	}	
 }
 
 #home-page {
@@ -87,4 +92,13 @@ button a {
 .alert-box.alert {
 	background-color: #fbe3e4;
 	color: #96151b;
+}
+
+.value {
+	font-weight: 700;
+}
+
+.panel h5 {
+	margin-bottom: 2em;
+	color: #888;
 }
