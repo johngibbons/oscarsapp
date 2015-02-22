@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
 
   #returns true if anser matches master
   def correct_answer?(category)
-    unless @master.selections.find_by(category: category).nil?
+    unless @master.selections.find_by(category: category).nil? || @master.selections.find_by(category: category).nominee.nil?
       self.selections.find_by(category: category).nominee == @master.selections.find_by(category: category).nominee
     else
       return false
