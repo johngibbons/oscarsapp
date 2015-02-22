@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
+//= require jquery.countdown
 //= require_tree .
 $(function() {
 	$(document).foundation();
@@ -21,6 +22,9 @@ $(function() {
 	var ready;
 	ready = function() {
 		equalHeight('.equalHeight');
+
+		showStart = new Date(2015, 2-1, 22, 18, 30)
+		$(".countdown").countdown({until: $.countdown.UTCDate(-7, showStart), format: 'HMS'});
 	};
 
 	var maxHeight = 0;

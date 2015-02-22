@@ -5,6 +5,8 @@
 <% if show_started? %>
 	<h3>Sorry, no new entries.  The show has started!</h3>
 <% else %>
+	<h5>The 2015 Academy Awards start in:</h5>
+	<div class="countdown"></div>
 	<%= link_to "New Entry", new_entry_path, class: "button home" %>
 <% end %>
 </div>

@@ -1,51 +1,60 @@
 
-<h4><%= "#{@entry.name}'s Entry" %></h4>
-<h1>Score: <%= "#{number_with_precision(@entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %> </h1>
+<div class="entry-header">
+	<h4><%= "#{@entry.name}'s Entry" %></h4>
+	<h1>Score: <%= "#{number_with_precision(@entry.score, :precision => 0)} / #{number_with_precision(total_possible, :precision => 0)}" %> </h1>
 
-<h1><%= show_started? %></h1>
-
-<% unless show_started? %>
-	<% if submitted_entry? && @entry == current_entry %>
-		<%= link_to 'Edit This Entry', edit_entry_path(@entry), class: "button" %>
+	<!-- <h1><%= show_started? %></h1>
+	 -->
+	<% unless show_started? %>
+		<% if submitted_entry? && @entry == current_entry %>
+			<%= link_to 'Edit This Entry', edit_entry_path(@entry), class: "button" %>
+			<div class="countdown-entry">
+				<span id = "countdown-edit-text">You may edit your entry for another </span><span class="countdown"></span>
+			</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
 
-<div class="row">
-	<% @entry.selections.each do |selection| %>
-	  <div class="large-4 columns">
-		  <div class="panel equalHeight">
-				<h3><%= selection.category.name %></h3>
-        <h5 class="value"><%= pluralize(selection.category.value, 'point') %></h5>
-				<% @cat = Category.find(selection.category.id) %>
-				<% @cat.nominees.each do |nominee| %>
-					<% if master_entry %>
-							<% @master = master_entry.selections.find_by(category_id: @cat) %>
-					<% end %>
-					<% if nominee == selection.nominee %>
-						<% if @master && @master.nominee && nominee == @master.nominee %>
-							<div class="nominee selectee correct">
-								<%= nominee.name %>
-							</div>
-						<% elsif @master && @master.nominee %>
-							<div class="nominee selectee incorrect">
-								<%= nominee.name %>
-							</div>
+<% if @entry == current_entry || show_started? %>
+	<div class="row">
+		<% @entry.selections.each do |selection| %>
+		  <div class="large-4 columns">
+			  <div class="panel equalHeight">
+					<h3><%= selection.category.name %></h3>
+	        <h5 class="value"><%= pluralize(selection.category.value, 'point') %></h5>
+					<% @cat = Category.find(selection.category.id) %>
+					<% @cat.nominees.each do |nominee| %>
+						<% if master_entry %>
+								<% @master = master_entry.selections.find_by(category_id: @cat) %>
+						<% end %>
+						<% if nominee == selection.nominee %>
+							<% if @master && @master.nominee && nominee == @master.nominee %>
+								<div class="nominee selectee correct">
+									<%= nominee.name %>
+								</div>
+							<% elsif @master && @master.nominee %>
+								<div class="nominee selectee incorrect">
+									<%= nominee.name %>
+								</div>
+							<% else %>
+								<div class="nominee selectee">
+									<%= nominee.name %>
+								</div>
+							<% end %>
+						<% elsif @master && @master.nominee && nominee == @master.nominee%>
+								<div class="nominee correct">
+									<%= nominee.name %>
+								</div>					
 						<% else %>
-							<div class="nominee selectee">
+							<div class="nominee">
 								<%= nominee.name %>
 							</div>
 						<% end %>
-					<% elsif @master && @master.nominee && nominee == @master.nominee%>
-							<div class="nominee correct">
-								<%= nominee.name %>
-							</div>					
-					<% else %>
-						<div class="nominee">
-							<%= nominee.name %>
-						</div>
 					<% end %>
-				<% end %>
+				</div>
 			</div>
-		</div>
-	<% end %>
-</div>
+		<% end %>
+	</div>
+<% else %>
+	<h2>Entry is hidden until the show starts.</h2>
+<% end %>

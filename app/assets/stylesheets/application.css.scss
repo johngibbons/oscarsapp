@@ -115,3 +115,28 @@ a.button {
 		font-size: 1.2rem;
 	}
 }
+
+.countdown {
+	span {
+		margin-right: .5rem;
+	}
+}
+
+#countdown-edit-text {
+	margin-left: 2rem;
+}
+
+.countdown-entry {
+	margin: 3rem 0;
+	text-align: center;
+	font-weight: 700;
+}
+
+.entry-header {
+	text-align: center;
+	margin-bottom: 2em;
+
+	h4 {
+		margin-bottom: 1em;
+	}
+}
